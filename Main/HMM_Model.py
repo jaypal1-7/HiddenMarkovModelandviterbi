@@ -4,9 +4,9 @@
 # In[ ]:
 
 
-class HMM_Model(object):
-    
-    def __init__(self,txtformat=[],HMM=[]):
-        self.Text_format = txtformat
-        self.HMM_Viterbi = HMM
+class HMMModel(object):
+    def __init__(self, text_format=None, hmm_viterbi=None):
+        self.text_format = text_format
+        self.hmm_viterbi = hmm_viterbi
+
 
