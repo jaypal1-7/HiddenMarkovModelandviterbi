@@ -7,27 +7,26 @@
 from sklearn.preprocessing import LabelEncoder
 import string
 
-class Text_format(object):
-    """Text formatting Class - data related to text to be fed"""
+class TextFormatter(object):
+    """Text Formatting Class - data related to text to be fed"""
 
-    def __init__(self,Encoder = None):
-        self.Encoder = preprocessing.LabelEncoder()
-        self.EncodedTxtList=[]
-    
-    def Text_Process(self,text):
+    def __init__(self):
+        self.Encoder = LabelEncoder()
+        self.EncodedTxtList = []
+
+    def text_process(self, text):
         text = text.replace(',', ' COMMA')
         text = text.replace('.', ' PERIOD')
         text = text.lower()
-        remPunct = str.maketrans('', '', string.punctuation)
-        text = text.translate(remPunct)
+        rem_punct = str.maketrans('', '', string.punctuation)
+        text = text.translate(rem_punct)
         return text
 
-    def TextEncoding(self,text):
-        text = self.Text_Process(text)
-        TxtList = list(filter(None,text.split()))
-        txtList_NoDuplicate = list(set(TxtList))
-        self.EncodedTxtList = self.Encoder.fit_transform(txtList_NoDuplicate)
-
+    def text_encoding(self, text):
+        text = self.text_process(text)
+        txt_list = list(filter(None, text.split()))
+        txt_list_no_duplicates = list(set(txt_list))
+        self.EncodedTxtList = self.Encoder.fit_transform(txt_list_no_duplicates)
         
 
 
